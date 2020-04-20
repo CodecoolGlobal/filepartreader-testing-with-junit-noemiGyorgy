@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class TestFilePartReader {
 
     private FilePartReader filePartReader = new FilePartReader();
-    private String filePath = "../../main/resources/test.txt";
+    private String filePath = "src/main/resources/test.txt";
 
     @Test(expected = IllegalArgumentException.class)
     public void testFromLineSmallerThanToLine(){
@@ -35,6 +35,6 @@ public class TestFilePartReader {
     @Test
     public void testReadlines(){
         filePartReader.setup(filePath,2,4);
-        assertEquals("READLINES TEST: ", "barfoothefoobarman Foo\n" + "radar foofoobarbar", filePartReader.readLines());
+        assertEquals("READLINES TEST: ", "barfoothefoobarman Foo\n" + "radar foofoobarbar\n", filePartReader.readLines());
     }
 }

@@ -15,6 +15,7 @@ public class FileWordAnalyzer {
         this.filePartReader = filePartReader;
         getWords();
     }
+
     public List<String> getWordsOrderedAlphabetically() {
         List<String> orderedWords = new ArrayList<>(words);
         Collections.sort(orderedWords);
@@ -47,13 +48,9 @@ public class FileWordAnalyzer {
 
     @SneakyThrows
     private void getWords () {
-        String readLines = filePartReader
-                .readLines()
-                .replace("\n", " ")
-                .replaceAll("[.,;]", " ")
-                .replaceAll("", " ")
-                .replaceAll("\t", " ");
-
+        String readLines = filePartReader.readLines();
+        System.out.println(readLines);
+        readLines.replaceAll("[.,;]\n\t", " ");
         this.words = Arrays
                 .stream(readLines.split(" "))
                 .collect(Collectors.toList());

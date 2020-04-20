@@ -10,7 +10,7 @@ public class FilePartReader {
     Integer toLine;
 
     public FilePartReader() {
-        setup("../resources/test.txt", 1, 1);
+        setup("src/main/resources/test.txt", 1, 1);
     }
     
     public void setup(String filePath,Integer fromLine, Integer toLine) {
@@ -52,10 +52,8 @@ public class FilePartReader {
         if (rows.length < toLine) toLine = rows.length;
         String[] usefulContentRows = new String[toLine - fromLine + 1];
 
-        int j = 0;
-        for (int i = fromLine - 1; i < toLine; i++) {
+        for (int i = fromLine - 1, j = 0; i < toLine; i++, j++) {
             usefulContentRows[j] = rows[i] + "\n";
-            j++;
         }
         StringBuilder usefulContent = new StringBuilder();
         Arrays.stream(usefulContentRows).forEach(usefulContent::append);
