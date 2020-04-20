@@ -1,5 +1,6 @@
+import lombok.SneakyThrows;
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -24,6 +25,7 @@ public class FilePartReader {
         }
     }
 
+    @SneakyThrows
     public String read() throws IOException {
 
         try {
@@ -43,7 +45,8 @@ public class FilePartReader {
         return "File not found";
     }
 
-    public String readLines() throws IOException {
+    @SneakyThrows
+    public String readLines() {
         String read = read();
         String[] rows = read.split("\n");
         if (rows.length < toLine) toLine = rows.length;
